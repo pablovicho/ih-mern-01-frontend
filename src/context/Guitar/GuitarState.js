@@ -7,6 +7,7 @@
 import { useReducer } from "react"; //es como useState
 import GuitarContext from "./GuitarContext";
 import GuitarReducer from "./GuitarReducer";
+import axiosClient from "../../config/axios";
 
 const GuitarState = (props) => {
   // 1. Estado inicial
@@ -25,6 +26,15 @@ const GuitarState = (props) => {
       payload: "estoy aprendiendo Context sin morir en el intento", //datos reales que le vas a pasar para cambiar el estado global
     });
   };
+
+  const getGuitars = async() => {
+    const res = await axiosClient.get("guitars/readall")
+    const list = res.data.data
+    dispatch({
+      type: "GET_GUITARS",
+      payload: list, //datos reales que le vas a pasar para cambiar el estado global
+    });
+  }
   // 4. Retorno. para que pueda retornar todos los datos, necesitamos un provider: da acceso a db
   return (
     <GuitarContext.Provider
@@ -33,6 +43,7 @@ const GuitarState = (props) => {
         guitars: globalState.guitars,
         hola: globalState.hola,
         changeText,
+        getGuitars
       }}
     >
       {props.children} {/*todos los children tendrán acceso a value*/}

@@ -22,7 +22,7 @@ const Router = () => {
             <Route path="/" element ={<Layout/>}>
 <Route index element={<Home/>}/>
 <Route path="registro" element={<Register/>}/>
-<Route  path="iniciar-sesion" element={<Login/>}/>
+<Route path="iniciar-sesion" element={<Login/>}/>
 <Route path="guitarras" element={<Guitars/>}></Route>
 <Route path="tiendas" element={<Stores/>}></Route>
             </Route>

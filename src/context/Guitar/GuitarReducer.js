@@ -7,6 +7,12 @@ return {
 }
         }
 
+        case "GET_GUITARS":
+			return {
+				...globalState,
+				guitars: action.payload
+			}
+
         default:
             return globalState
     }

@@ -6,6 +6,13 @@ const reducer = (globalState, action) => {
                 hola: action.payload
             }
                     }
+
+                    case "GET_STORES":
+			return {
+				...globalState,
+				stores: action.payload
+			}
+
         default:
             return globalState
     }
